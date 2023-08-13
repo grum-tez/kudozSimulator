@@ -3,6 +3,7 @@ let donation_records: {
   amount: number
   cumulative_amount: number
   slice: { start: number; end: number }
+  slice_proportion: number
 }[] = []
 
 function CDF(x) {
@@ -54,6 +55,7 @@ export function donate(userName: string, amount: number) {
         amount: amount,
         cumulative_amount: 0,
         slice: { start: 0, end: 0 },
+        slice_proportion: 0,
       })
       const result = donation_records.reduce(
         (accumulatedRecords, record, index) => {
@@ -66,8 +68,10 @@ export function donate(userName: string, amount: number) {
               index === 0 ? 0 : accumulatedRecords[index - 1].cumulative_amount,
             end: cumulative_amount,
           }
+          const slice_proportion = get_slice_prop(slice.start, slice.end)
           record.cumulative_amount = cumulative_amount
           record.slice = slice
+          record.slice_proportion = slice_proportion
           accumulatedRecords.push(record)
           return accumulatedRecords
         },
