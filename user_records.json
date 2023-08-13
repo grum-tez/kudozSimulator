@@ -2,15 +2,15 @@
   "users": [
     {
       "name": "Alice",
-      "balance": 5
+      "balance": 10
     },
     {
       "name": "Bob",
-      "balance": -5
+      "balance": 0
     },
     {
       "name": "Carlie",
-      "balance": 0
+      "balance": -10
     },
     {
       "name": "David",

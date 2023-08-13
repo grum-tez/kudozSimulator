@@ -20,15 +20,26 @@ export function donate(userName: string, amount: number) {
   const user = users.find((user: any) => user.name === userName)
 
   if (user) {
-    // Deduct the amount from the user's balance
+    // Calculate the tax amount (10% of the donation)
+    const tax = amount * 0.1
+
+    // Deduct the tax from the user's balance
     user.balance -= amount
 
     // Find Alice
     const alice = users.find((user: any) => user.name === 'Alice')
 
     if (alice) {
-      // Add the amount to Alice's balance
-      alice.balance += amount
+      // Add the remaining amount (90% of the donation) to Alice's balance
+      alice.balance += amount - tax
+    }
+
+    // Find Kudoz
+    const kudoz = users.find((user: any) => user.name === 'Kudoz')
+
+    if (kudoz) {
+      // Add the tax amount to Kudoz's balance
+      kudoz.balance += tax
     }
   }
 
