@@ -2,11 +2,11 @@
   "users": [
     {
       "name": "Alice",
-      "balance": 0
+      "balance": 5
     },
     {
       "name": "Bob",
-      "balance": 0
+      "balance": -5
     },
     {
       "name": "Carlie",

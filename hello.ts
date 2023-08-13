@@ -44,6 +44,7 @@ export function donate(userName: string, amount: number) {
 export function resetBalances() {
   const userRecords = require('./user_records.json')
   const users = userRecords.users
+  console.log('resetting balances to zero')
 
   // Set all balances to zero
   users.forEach((user: any) => {
