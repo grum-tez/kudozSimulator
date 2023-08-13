@@ -2,7 +2,7 @@
   "users": [
     {
       "name": "Alice",
-      "balance": 10
+      "balance": 9
     },
     {
       "name": "Bob",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Kudoz",
-      "balance": 0
+      "balance": 1
     }
   ]
 }

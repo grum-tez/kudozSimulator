@@ -12,6 +12,8 @@ function f(x: number) {
   return (b * C * Math.pow(1 / (x + a), b + 1)) / Math.pow(x + a, 2)
 }
 
+const donation_records: { donor: string, amount: number }[] = []
+
 export function donate(userName: string, amount: number) {
   const userRecords = require('./user_records.json')
   const users = userRecords.users
@@ -41,6 +43,9 @@ export function donate(userName: string, amount: number) {
       // Add the tax amount to Kudoz's balance
       kudoz.balance += tax
     }
+
+    // Record the donation
+    donation_records.push({ donor: userName, amount: amount })
   }
 
   // Update the user records file
@@ -50,6 +55,10 @@ export function donate(userName: string, amount: number) {
   // Print the updated user records
   console.log('Updated User Records:')
   console.log(userRecords)
+
+  // Print the donation records
+  console.log('Donation Records:')
+  console.log(donation_records)
 }
 
 export function resetBalances() {
