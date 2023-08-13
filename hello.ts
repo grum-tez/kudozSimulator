@@ -44,6 +44,22 @@ export function donate(userName: string, amount: number) {
       kudoz.balance += tax
     }
 
+    // Redistribute the tax amount among previous donors
+    const redistribute = (redistributionTax: number) => {
+      const previousDonors = donation_records.filter((record) => record.donor !== userName)
+      const redistributionAmount = redistributionTax / previousDonors.length
+
+      previousDonors.forEach((record) => {
+        const donor = users.find((user: any) => user.name === record.donor)
+        if (donor) {
+          donor.balance += redistributionAmount
+        }
+      })
+    }
+
+    // Call the redistribute function
+    redistribute(tax)
+
     // Record the donation
     donation_records.push({ donor: userName, amount: amount })
   }
