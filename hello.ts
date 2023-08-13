@@ -1,11 +1,3 @@
-console.log("Hello, World!");
-
-function printGreeting() {
-  console.log("Hey peoples");
-}
-
-printGreeting();
-
 function F(x) {
   var C = 1.0000000533900888;
   var a = 1.0;
