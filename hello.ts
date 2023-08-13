@@ -64,3 +64,17 @@ export function donate(userName: string, amount: number) {
   console.log('Donation Records:')
   console.log(donation_records)
 }
+
+export function resetBalances() {
+  const userRecords = require('./user_records.json')
+  const users = userRecords.users
+
+  users.forEach((user: any) => {
+    user.balance = 0
+  })
+
+  const fs = require('fs')
+  fs.writeFileSync('./user_records.json', JSON.stringify(userRecords, null, 2))
+
+  console.log('Balances reset to zero.')
+}
