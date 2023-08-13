@@ -2,10 +2,19 @@
 <html>
 <head>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    .plot-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-  <div id="plotF"></div>
-  <div id="plotf"></div>
+  <div class="plot-container">
+    <div id="plotF"></div>
+    <div id="plotf"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

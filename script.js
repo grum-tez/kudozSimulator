@@ -34,7 +34,7 @@ var traceF = {
   y: yF,
   type: 'scatter',
   name: 'Cumulative Density Function',
-  domain: [0, 0.5]
+  domain: [0, 1]
 };
 
 // Create the plot for f(x)
@@ -43,14 +43,13 @@ var tracef = {
   y: yf,
   type: 'scatter',
   name: 'Probability Density Function',
-  domain: [0.5, 1]
+  domain: [0, 1]
 };
 
 var layoutF = {
   title: 'Cumulative Density Function',
   xaxis: {
-    title: 'x',
-    domain: [0, 0.5]
+    title: 'x'
   },
   yaxis: {
     title: 'y'
@@ -60,8 +59,7 @@ var layoutF = {
 var layoutf = {
   title: 'Probability Density Function',
   xaxis: {
-    title: 'x',
-    domain: [0.5, 1]
+    title: 'x'
   },
   yaxis: {
     title: 'y'
