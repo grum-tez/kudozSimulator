@@ -1,4 +1,20 @@
-const donation_records: { donor: string; amount: number; cumulative_amount: number; slice: { start: number; end: number } }[] = []
+let donation_records: {
+  donor: string
+  amount: number
+  cumulative_amount: number
+  slice: { start: number; end: number }
+}[] = []
+
+function CDF(x) {
+  var C = 1.0000000533900888
+  var a = 1.0
+  var b = 24.158852886550765
+  return -C * Math.pow(1 / (x + a), b) + C
+}
+
+function get_slice_prop(start: number, end: number) {
+  return CDF(end) - CDF(start)
+}
 
 export function donate(userName: string, amount: number) {
   const userRecords = require('./user_records.json')
@@ -30,6 +46,38 @@ export function donate(userName: string, amount: number) {
       kudoz.balance += tax
     }
 
+    // Record the donation
+
+    const update_donation_records = (userName, amount) => {
+      donation_records.push({
+        donor: userName,
+        amount: amount,
+        cumulative_amount: 0,
+        slice: { start: 0, end: 0 },
+      })
+      const result = donation_records.reduce(
+        (accumulatedRecords, record, index) => {
+          const cumulative_amount =
+            index === 0
+              ? record.amount
+              : accumulatedRecords[index - 1].cumulative_amount + record.amount
+          const slice = {
+            start:
+              index === 0 ? 0 : accumulatedRecords[index - 1].cumulative_amount,
+            end: cumulative_amount,
+          }
+          record.cumulative_amount = cumulative_amount
+          record.slice = slice
+          accumulatedRecords.push(record)
+          return accumulatedRecords
+        },
+        []
+      )
+      return donation_records
+    }
+
+    donation_records = update_donation_records(userName, amount)
+
     // Redistribute the tax amount among previous donors
     const redistribute = (redistributionTax: number) => {
       const previousDonors = donation_records.filter(
@@ -47,9 +95,6 @@ export function donate(userName: string, amount: number) {
 
     // Call the redistribute function
     redistribute(tax)
-
-    // Record the donation
-    donation_records.push({ donor: userName, amount: amount, cumulative_amount: 0, slice: { start: 0, end: 0 } })
   }
 
   // Update the user records file
