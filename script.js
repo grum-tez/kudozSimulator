@@ -33,7 +33,8 @@ var traceF = {
   x: x,
   y: yF,
   type: 'scatter',
-  name: 'Cumulative Density Function'
+  name: 'Cumulative Density Function',
+  domain: [0, 0.5]
 };
 
 // Create the plot for f(x)
@@ -41,19 +42,34 @@ var tracef = {
   x: x,
   y: yf,
   type: 'scatter',
-  name: 'Probability Density Function'
+  name: 'Probability Density Function',
+  domain: [0.5, 1]
 };
 
-var layout = {
-  title: 'Plot of Function F and f',
+var layoutF = {
+  title: 'Cumulative Density Function',
   xaxis: {
-    title: 'x'
+    title: 'x',
+    domain: [0, 0.5]
   },
   yaxis: {
     title: 'y'
   }
 };
 
-var data = [traceF, tracef];
+var layoutf = {
+  title: 'Probability Density Function',
+  xaxis: {
+    title: 'x',
+    domain: [0.5, 1]
+  },
+  yaxis: {
+    title: 'y'
+  }
+};
 
-Plotly.newPlot('plot', data, layout);
+var dataF = [traceF];
+var dataf = [tracef];
+
+Plotly.newPlot('plotF', dataF, layoutF);
+Plotly.newPlot('plotf', dataf, layoutf);
