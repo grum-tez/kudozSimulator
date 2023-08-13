@@ -36,3 +36,17 @@ export function donate(userName: string, amount: number) {
   const fs = require('fs')
   fs.writeFileSync('./user_records.json', JSON.stringify(userRecords, null, 2))
 }
+
+export function resetBalances() {
+  const userRecords = require('./user_records.json')
+  const users = userRecords.users
+
+  // Set all balances to zero
+  users.forEach((user: any) => {
+    user.balance = 0
+  })
+
+  // Update the user records file
+  const fs = require('fs')
+  fs.writeFileSync('./user_records.json', JSON.stringify(userRecords, null, 2))
+}

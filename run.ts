@@ -1,5 +1,5 @@
 const readline = require('readline')
-import { donate } from './hello'
+import { donate, resetBalances } from './hello'
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -23,3 +23,11 @@ rl.question(
     })
   }
 )
+
+rl.question('Do you want to reset all balances to zero? (yes/no) ', (answer: string) => {
+  if (answer.toLowerCase() === 'yes') {
+    resetBalances()
+    console.log('All balances have been set to zero.')
+  }
+  rl.close()
+})
