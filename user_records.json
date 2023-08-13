@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "name": "Alice",
+      "balance": 0
+    },
+    {
+      "name": "Bob",
+      "balance": 0
+    },
+    {
+      "name": "Carlie",
+      "balance": 0
+    },
+    {
+      "name": "David",
+      "balance": 0
+    },
+    {
+      "name": "Emily",
+      "balance": 0
+    },
+    {
+      "name": "Frank",
+      "balance": 0
+    },
+    {
+      "name": "Grace",
+      "balance": 0
+    },
+    {
+      "name": "Henry",
+      "balance": 0
+    },
+    {
+      "name": "Isabella",
+      "balance": 0
+    },
+    {
+      "name": "Jack",
+      "balance": 0
+    },
+    {
+      "name": "Kudoz",
+      "balance": 0
+    }
+  ]
+}
