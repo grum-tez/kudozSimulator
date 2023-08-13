@@ -35,6 +35,10 @@ export function donate(userName: string, amount: number) {
   // Update the user records file
   const fs = require('fs')
   fs.writeFileSync('./user_records.json', JSON.stringify(userRecords, null, 2))
+
+  // Print the updated user records
+  console.log('Updated User Records:')
+  console.log(userRecords)
 }
 
 export function resetBalances() {
