@@ -7,7 +7,7 @@ function F(x) {
 
 // Generate x values
 var x = [];
-for (var i = -10; i <= 10; i += 0.1) {
+for (var i = 0; i <= 1; i += 0.01) {
   x.push(i);
 }
 
